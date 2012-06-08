@@ -46,6 +46,47 @@ namespace Lesson1
             // Now that we have his name, we can print it back to him.
             Console.WriteLine("Hello " + username);
 
+
+            // Here we are going to take a look at flow control. We are going to make a menu of things we want the computer
+            // to do.
+
+            // first we are going to store weither or not we are done. By default we are not done until the user says so.
+            bool exit = false;
+
+            // we are going to set up of loop, where we keep doing thing until we are done.
+            while (!exit)
+            {
+                // we are going to want to display the available commands to the user.
+                Console.WriteLine("1.) Exit");
+                Console.WriteLine("2.) Clear screen");
+
+                Console.WriteLine(); // write a blank line
+                Console.Write("What do you want me to do? "); // notic here we used write instead of write line, it does not make a line break.
+
+                // here we take the users input and store it a characher key
+                char input = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+
+                // we can compare the value the user entered and do the appropriate actions
+                if (input == '1')
+                {
+                    // set exit to true so we break out the loop
+                    exit = true;
+                }
+                else if (input == '2')
+                {
+                    // a simple command to clear the screen
+                    Console.Clear();
+                }
+                else // if the value does not enter any of the predefined commands we notify the user and tell them to try again
+                {
+                    Console.WriteLine("Sorry " + input + " is not a valid command.");
+                }
+            }
+
+            // now that we exited the loop we can say good bye.
+            Console.WriteLine("GoodBye!");
+
             // Now that we are done, we will want to wait again, so we can allow the user to see his input.
             Console.ReadKey();
         }
