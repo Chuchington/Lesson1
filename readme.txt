@@ -1,3 +1,5 @@
+Check in #5. Added a for loop, and variable scoping
+
 Check in #4. Added function calls
 
 Check in #3. Simple flow logic.

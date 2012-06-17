@@ -17,6 +17,10 @@ namespace Lesson1
     // I will explain classes later
     class Program
     {
+        // we need to move this variable out of the main function so it can be used in other function.
+        // Variables declared within a function can only be used within that function, this is called scoping.
+        static string username;
+
         // this is a function which I will explain later, but it for this example it is important to know
         // that this "Main" function is where you program starts.
         static void Main(string[] args)
@@ -35,10 +39,6 @@ namespace Lesson1
             // Next we are going to take in input from the user. We will ask the user his name and print it back to him.
             // Here we will ask the user to tell us his name.
             Console.WriteLine("What is your name?");
-
-            // If we are going take the users name we need to store it some where. This is where variables come in.
-            // This is a variable. It is a string and its name is "username";
-            string username;
 
             // This line of code below is used to get input from the user, and store his answer in the variable "username".
             username = Console.ReadLine();
@@ -61,6 +61,7 @@ namespace Lesson1
                 Console.WriteLine("2.) Clear screen");
                 Console.WriteLine("3.) Change foreground colors");
                 Console.WriteLine("4.) Change background colors");
+                Console.WriteLine("5.) Say my name");
 
                 Console.WriteLine(); // write a blank line
                 Console.Write("What do you want me to do? "); // notic here we used write instead of write line, it does not make a line break.
@@ -89,6 +90,10 @@ namespace Lesson1
                 {
                     // we can reuse the same function so we don't have code the same logic multiple times
                     Console.BackgroundColor = RequestColor();
+                }
+                else if (input == '5')
+                {
+                    PrintUserName();
                 }
                 else // if the value does not enter any of the predefined commands we notify the user and tell them to try again
                 {
@@ -170,6 +175,39 @@ namespace Lesson1
                 }
             }
             return ourColor;
+        }
+
+        static void PrintUserName()
+        {
+            int numberofTimesToPrintName = -1;
+            while (numberofTimesToPrintName < 0)
+            {
+                Console.Write("How many times? ");
+                string input = Console.ReadLine(); // notice we do readline, this allows us to read until the user presses enter
+                
+                // this function will try to turn the string input into a number
+                // since a function can only return 1 value, and we want to know if the parse succeded and what it was parsed
+                // into. We can pass the number in as an "out" parameter. An out parameter lets us return more then 1 value.
+                if (!int.TryParse(input, out numberofTimesToPrintName))
+                {
+                    Console.WriteLine("Please enter a number");
+                    numberofTimesToPrintName = -1; // when the parse fails the out parameter is set to 0, we are going to change the failure case to -1
+                }
+            }
+
+            // now we print the name the number of times the user wanted.
+
+            // this is a for loop, you can write this logic using a while loop but it is easier as a for loop
+            for (int counter = 0; counter < numberofTimesToPrintName; counter++)
+            {
+                //here is the break down of the for loop
+                // int counter = 0; - this is the initializer, we are making a int variable named counter and setting it to zero
+                // counter < numberofTimesToPrintName; - this is the condition. Similiar to the while loop, this keeps running if the condition is true
+                // counter++ - this is the incrementer. this line of code is run each time you reach the end of the while loop. here we are adding 1 to the counter
+
+                // we can access the variable "username" since we promoted it out of the main function.
+                Console.WriteLine(username);
+            }
         }
     }
 }
