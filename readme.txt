@@ -1,3 +1,5 @@
+Check in #4. Added function calls
+
 Check in #3. Simple flow logic.
 
 Check in #2. We write some code that prints stuff to the screen and read in some input. (Ask the user his name) Small introduction to variables.
