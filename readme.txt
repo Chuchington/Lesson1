@@ -1,3 +1,5 @@
+Lesson 1. In this lesson we create a very simple app that prints information to the screen, and take in input from the user. The purpose of this lesson is to introduce the basic concepts such as variables, functions, and loops.
+
 Check in #5. Added a for loop, and variable scoping
 
 Check in #4. Added function calls
